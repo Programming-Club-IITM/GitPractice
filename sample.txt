@@ -1,0 +1,10 @@
+
+
+
+          SAMPLE TEXT FILE   
+
+          This is the first sentence
+          This is the second sentence 
+
+
+    Hello everyone. Hope you all are enjoying your holidays. This is a sample file for your practice. Carefully follow the instructions in README file and run all the commands. Also, do go through the slides. Git is the most widely used version control software. So, do learn everything properly. Also, hope that all of you are enjoying codecrafts camp
