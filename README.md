@@ -141,7 +141,7 @@ Consider the following scenario:
     git rebase -i main
     ```
 
-    You will see a list of commits that are being rebased. You can modify this list to combine, delete, or edit commits.
+    A new file will open and you will see that it has a list of commits that are being rebased. You can modify this list to combine, delete, or edit commits.
 
     In your case, you might see something like this:
 
