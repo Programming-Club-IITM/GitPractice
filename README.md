@@ -147,7 +147,7 @@ Consider the following scenario:
 
     ![Interactive 1](/content/images/interactive1.png)
 
-5) You need to edit this file to combine the two commits that added `new2.txt`. To do this, delete the line corresponding to the commit that `added new5.txt` and change the word `pick` to `squash` for the commit that `modified new2.txt`.
+5) You need to edit this file to combine the two commits that added `new2.txt`. To do this, change the word `pick` to `drop` corresponding to the commit that `added new5.txt` and change the word `pick` to `squash` for the commit that `modified new2.txt`.
 
     In case you are in the `vi` or `vim` editor, and you do not know how to use it, you can press `i` to enter insert mode, make the necessary changes, press `Esc` to exit insert mode, and then type `:wq` to save and exit.
 
