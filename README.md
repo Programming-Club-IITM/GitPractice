@@ -85,7 +85,46 @@ In cases where we want to combine the changes from one branch to another, we can
 | Creates a non-linear commit history                              | Creates a linear commit history                                |
 | Preserves the commit history of both branches                    | Rewrites the commit history of the branch being rebased |
 
-Now that you have rebased the `mySecondBranch` branch on top of the `main` branch, use `git log` to compare the commit history with the one where you merged `myFirstBranch` with `main`.
+Consider this example:
+
+![Current State](/content/images/cur_state.png)
+
+You have two branches, `main` and `branch1`. You have made some changes in `branch1` and want to combine these changes with the `main` branch.
+
+If we merge `branch1` with `main` using the following commands:
+
+```bash
+git checkout main
+git merge branch1
+```
+
+The commit history will look like this:
+
+![Merge State](/content/images/merge_state.png)
+
+Notice that the commit history is non-linear, and the changes from `branch1` have been combined with the `main` branch by creating a **new** commit. This is a three-way merge.
+
+Instead, if we had rebased `branch1` onto `main` using the following commands:
+
+```bash
+git checkout branch1
+git rebase main
+```
+
+The commit history would have looked like this:
+
+![Rebase State](/content/images/rebase_state.png)
+
+Notice that the commit history is linear, and the changes from `branch1` have been reapplied on top of the `main` branch. In order to get `main` up to date with the changes in `branch1`, we can now merge `branch1` with `main`.
+
+```bash
+git checkout main
+git merge branch1
+```
+
+**Remember:** Now, it would be a fast-forward merge and the linear commit history would be maintained.
+
+![Rebase->Merge State](/content/images/rebase->merge_state.png)
 
 ## Cherry-pick
 
@@ -133,19 +172,27 @@ Consider the following scenario:
 
 4) You want to rebase `mySecondBranch` onto `main`, but you have already cherry-picked the commit that added `new3.txt` to the `main` branch.
 
-    Now, you want the `new2.txt` file in your main branch, but it has two commits associated with it. You want to combine these two commits into a single commit. Moreover, now you do not want the `new5.txt` file anymore.
+    Now, you want the `new2.txt` file in your main branch, but it has two commits associated with it. You want to combine these two commits into a single commit. Moreover, you do not want the `new5.txt` file anymore.
 
-    Checkout to `mySecondBranch` and use the following command to interactively rebase the commits:
+    Checkout to `mySecondBranch`:
+
+    At this point, if you wanted to modify the commit history of `mySecondBranch`, you can use: `git rebase -i HEAD~4`. Notice that `HEAD` refers to the current commit (the latest commit on `mySecondBranch`), and `HEAD~4` refers to the commit which is four commits **before** the current commit (in this case, the first commit on `mySecondBranch`). This command will not rebase onto `main`, but rather onto the commit denoted by `HEAD~4`. In this case, it will rebase onto itself, effectively allowing you to modify the commit history of `mySecondBranch` by interacting with the 4 commits on `mySecondBranch`.
+
+    But for now, since you actually want to rebase onto `main`, you can use the following command:
 
     ```bash
     git rebase -i main
     ```
+
+    You could also use a combination of `git rebase -i HEAD~4` followed by `git rebase main` to achieve the same result. But for now, let's stick to the above command.
 
     A new file will open and you will see that it has a list of commits that are being rebased. You can modify this list to combine, delete, or edit commits.
 
     In your case, you might see something like this:
 
     ![Interactive 1](/content/images/interactive1.png)
+
+    **Note:** `git` doesn't show the commit that `added new3.txt`. This is because you have already cherry-picked this commit onto the `main` branch. `git` is smart enough to know that this commit is already present in the `main` branch and does not need to be rebased. If we had used `git rebase -i HEAD~4`, this commit would have been included in the list.
 
 5) You need to edit this file to combine the two commits that added `new2.txt`. To do this, change the word `pick` to `drop` corresponding to the commit that `added new5.txt` and change the word `pick` to `squash` for the commit that `modified new2.txt`.
 
