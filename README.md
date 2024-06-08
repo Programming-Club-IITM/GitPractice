@@ -36,19 +36,19 @@ Execute the following steps to practice various topics covered in the intro to g
    The above image says that the new sentence added to the file sample.txt is unstaged. It means that those changes are in git but they are not marked for commit. <br/>
    But, the newly added file new.txt is untracked. This means that this file is not in git and any changes made to it won't be recognized by git <br/>
    ![](images/git_diff.png) <br/> <br/>
-   When we perform git diff, it does not show new.txt. This is because new.txt is still untracked.
+   When we perform `git diff`, it does not show new.txt. This is because new.txt is still untracked.
     <hr>
 # 7) Stashing your changes
    Now use the command `git stash` followed by `git status`. <br/> <br/>
    ![](images/git_stash.png) <br/> <br/>
    This command is used when we want to have a clean working directory but at the sametime save our changes. All the tracked work gets saved, but the untracked changes remain as it is and they wont be saved. <br/>
-   Carefully observe the difference between the current and the previous output of git status.  
+   Carefully observe the difference between the current and the previous output of `git status`.  
     Now use the command `git stash pop` <br/> <br/>
     ![](images/git_stash_pop.png) <br/> <br/>
     As we can see, all our changes are back.
     <hr>
 # 8) Stashing untracked changes
-   Now use the command `git stash -u` followed by git status. <br/> <br/>
+   Now use the command `git stash -u` followed by `git status`. <br/> <br/>
    ![](images/git_stash_u.png) <br/> <br/>
     This time it even stashes the untracked file.
     Now again, use the command `git stash pop`. You will be able to see both the tracked and untracked changes.
