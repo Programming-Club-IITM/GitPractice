@@ -55,7 +55,7 @@ Execute the following steps to practice various topics covered in the intro to g
     <hr>
 # 9) Staging the changes
    Use the command `git add --all` to stage all the changes <br/> <br/>
-   ![](images/git_add.png)
+   ![](images/git_add.png) <br/> <br/>
   Again use the commands `git status` and `git diff` and see what happens <br/> <br/>
    ![](images/git_status_2.png)
    ![](images/git_diff_2.png) <br/> <br/>
@@ -70,7 +70,7 @@ Execute the following steps to practice various topics covered in the intro to g
    ![](images/git_checkout_2.png) <br/> <br/>
    As shown in the above image, the branch changes from myFirstBranch to main <br/>
    Now merge the other branch with main branch using `git merge myFirstBranch` <br/> <br/>
-   ![](images/git_merge.png) <br/> <br/>
+   ![](images/git_merge.png) 
       <hr>
 # 12) Tracking upstream repository
    Use the command `git remote -v` to see all the tracked github repositories <br/> <br/>
