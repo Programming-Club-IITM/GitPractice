@@ -128,7 +128,7 @@ git merge branch1
 
 ## Cherry-pick
 
-`git cherry-pick` is used to apply the changes introduced by some existing commits. It is useful when you want to apply a single commit from one branch to another.
+`git cherry-pick` is used to apply the changes introduced by some existing commits. It is useful when you want to apply a one or more commits from one branch to another.
 
 At this point, if you are on `main`, you will **not** have the `new2.txt` and `new3.txt` files.
 
