@@ -4,18 +4,84 @@ This repository contains a few practice assignments on git.<br/>
 First, setup git and create a github account as explained in the slides.<br/>
 
 Execute the following steps to practice various topics covered in the intro to git session<br/>
-1) Fork the repository using the fork icon.<br/>
-2) Clone the forked repository into a directory of your choice in your local machine using the command git clone <url_of_forked_repository> <br/>
-3) Create a branch with name myFirstBranch using the command git branch <br/>
-4) Now switch to the new branch using the command git checkout myFirstBranch<br/>
-5) Add a sentence of your choice to the sample.txt file. (Ex : Hi I am <your_name>) <br/>
-6) Add a new text file named new.txt <br/>
-7) Now, use the commands git status and git diff and see what happens <br/>
-8) Use the command git add --all to stage all the changes <br/>
-9) Again use the commands git status and git diff and see what happens <br/>
-10) Now, commit the changes using git commit -m "my first commit" <br/>
-11) Switch to the main branch by using the command git checkout main <br/>
-12) Now merge the other branch with main branch using git merge myFirstBranch <br/>
-13) Now push all the changes onto your forked github repository using git push origin/main <br/>
+## Forking a repository 
+   Fork the repository using the fork icon.<br/> <br/>
+   ![](images/fork.png)
+    <hr>
+## Cloning a forked repository 
+   Clone the forked repository into a directory of your choice in your local machine using the command `git clone <url_of_forked_repository>` <br/> <br/>
+   ![](images/clone.png)
+    <hr>
+## Branching
+   Create a branch with name myFirstBranch using the command `git branch myFirstBranch` <br/> <br/>
+   ![](images/git_branch.png)
+    <hr>
+## Switching to a new branch
+   Now switch to the new branch using the command `git checkout myFirstBranch` <br/> <br/>
+   ![](images/git_checkout.png) <br/> <br/>
+   As shown in the above image, the branch gets changed from main to my first branch <br/>
+    <hr>
+   # Note : 
+   The above two steps can be performed at once by using the command `git checkout -b "myFirstBranch"`. This command creates a new branch with the name specified in the quotes and switches to that branch.
+    <hr>
+## Making changes
+   Add a sentence of your choice to the sample.txt file (Ex : Hi I am <your_name>) and add a new text file named new.txt <br/>
+   This is how the cloned repository on your local machine should look after doing the above two changes <br/> <br/>
+   ![](images/new_file.png) <br/> <br/>
+   The newly added file new.txt and any changes made to it will not be tracked, i.e they are not present in git and git does not recognize any changes made to that file. Since sample.txt was already tracked when you cloned the repository from github, git will be aware of all the changes made to that file. <br/> <br/>
+   But, the newly added sentence to sample.txt is unstaged, i.e it is not yet marked for commit. In order to stage it, we have to use the command `git add` 
+     <hr>
+## Checking the difference 
+   Now, use the commands `git status` and `git diff` and see what happens <br/> <br/>
+   ![](images/git_status.png) <br/> <br/>
+   The above image says that the new sentence added to the file sample.txt is unstaged and the newly added file new.txt is untracked.<br/> <br/>
+   ![](images/git_diff.png) <br/> <br/>
+   When we perform `git diff`, it does not show new.txt. This is because new.txt is still untracked.
+    <hr>
+## Stashing your changes
+   Now use the command `git stash` followed by `git status`. <br/> <br/>
+   ![](images/git_stash.png) <br/> <br/>
+   This command is used when we want to have a clean working directory but at the sametime save our changes. All the tracked work gets saved, but the untracked changes remain as it is and they wont be saved. <br/>
+   Carefully observe the difference between the current and the previous output of `git status`.  
+    Now use the command `git stash pop` <br/> <br/>
+    ![](images/git_stash_pop.png) <br/> <br/>
+    As we can see, all our changes are back.
+    <hr>
+## Stashing untracked changes
+   Now use the command `git stash -u` followed by `git status`. <br/> <br/>
+   ![](images/git_stash_u.png) <br/> <br/>
+    This time it even stashes the untracked file.
+    Now again, use the command `git stash pop`. You will be able to see both the tracked and untracked changes.
+    <hr>
+## Staging the changes
+   Use the command `git add --all` to stage all the changes <br/> <br/>
+   ![](images/git_add.png) <br/> <br/>
+  Again use the commands `git status` and `git diff` and see what happens <br/> <br/>
+   ![](images/git_status_2.png)
+   ![](images/git_diff_2.png) <br/> <br/>
+   Since all our changes have been staged, `git diff` does not show anything.
+    <hr>
+## Committing changes
+   Now, commit the changes using `git commit -m "my first commit"` <br/> <br/>
+   ![](images/git_commit.png)
+     <hr>
+## Merging branches
+   Switch to the main branch by using the command `git checkout main` <br/> <br/>
+   ![](images/git_checkout_2.png) <br/> <br/>
+   As shown in the above image, the branch changes from myFirstBranch to main <br/>
+   Now merge the other branch with main branch using `git merge myFirstBranch` <br/> <br/>
+   ![](images/git_merge.png) 
+      <hr>
+## Tracking upstream repository
+   Use the command `git remote -v` to see all the tracked github repositories <br/> <br/>
+   ![](images/git_remote.png) <br/> <br/>
+   As shown in the image, it only tracks the forked repository <br/>
+   Use the command `git remote add upstream <url_of_upstream_repo>` to track the upstream repo as well. Then again use the command `git remote -v` to check if the upstream is being tracked.<br/> <br/>
+   ![](images/git_upstream.png)
+     <hr>
+## Pushing changes
+   Now push all the changes onto your forked github repository using `git push origin main`
+   ![](images/git_push.png) <br/> <br/>
  
- Open your forked github repository and check whether all the changes have been updated. <br/>
+ Open your forked github repository and check whether all the changes have been updated.
+ <hr>
