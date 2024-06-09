@@ -176,7 +176,8 @@ Consider the following scenario:
 
     Checkout to `mySecondBranch`:
 
-    At this point, if you wanted to modify the commit history of `mySecondBranch`, you can use: `git rebase -i HEAD~4`. Notice that `HEAD` refers to the current commit (the latest commit on `mySecondBranch`), and `HEAD~4` refers to the commit which is four commits **before** the current commit (in this case, the first commit on `mySecondBranch`). This command will not rebase onto `main`, but rather onto the commit denoted by `HEAD~4`. In this case, it will rebase onto itself, effectively allowing you to modify the commit history of `mySecondBranch` by interacting with the 4 commits on `mySecondBranch`.
+    At this point, if you wanted to modify the commit history of `mySecondBranch`, you can use: `git rebase -i HEAD~4`. Notice that `HEAD` refers to the current commit (the latest commit on `mySecondBranch`), and `HEAD~4` refers to the commit which is four commits **before** the current commit (in this case, the first commit on `mySecondBranch`). This command will not rebase onto `main`, but rather onto the commit denoted by `HEAD~4`. In this case, it will rebase onto itself, effectively allowing you to modify the commit history of `mySecondBranch` by interacting with the last 4 commits on `mySecondBranch`. 
+Note that you need to be careful to not rebase with a number greater than 4 if you have committed for a maximum of 4 times in the current PR, else the commits in `main` before this PR will also be pulled in and will clutter the repository
 
     But for now, since you actually want to rebase onto `main`, you can use the following command:
 
